@@ -33,7 +33,7 @@ const rules = [
 ];
 
 const escapeHTML = str =>
-    str.replace(/[<>]/g, c => ({
+    str.replace(/[&<>"']/g, c => ({
         '&': '&amp;',
         '<': '&lt;',
         '>': '&gt;',
