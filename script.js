@@ -7,15 +7,15 @@ const convertMarkdown = () => {
     // heading
     html = html.replace(/^(#+) (.+)$/gm, (_, level, text) => `<h${level.length}>${text}</h${level.length}>`);
     // strong
-    html = html.replace(/(\*\*|__)(.+)\1/gm, (_, __, text) => `<strong>${text}</strong>`);
+    html = html.replace(/(\*\*|__)(.+)\1/gm, `<strong>$2</strong>`);
     // em
-    html = html.replace(/(\*|_)(.+)\1/gm, (_, __, text) => `<em>${text}</em>`);
+    html = html.replace(/(\*|_)(.+)\1/gm, `<em>$2</em>`);
     // img
-    html = html.replace(/!\[(.+)\]\((.+)\)/gm, (_, altText, imageSource) => `<img alt="${altText}" src="${imageSource}">`);
+    html = html.replace(/!\[(.+)\]\((.+)\)/gm, `<img alt="$1" src="$2">`);
     // a
-    html = html.replace(/\[(.+)\]\((.+)\)/gm, (_, linkText, url) => `<a href="${url}">${linkText}</a>`);
+    html = html.replace(/\[(.+)\]\((.+)\)/gm, `<a href="$2">$1</a>`);
     // blockquote
-    html = html.replace(/^> (.+)/gm, (_, quote) => `<blockquote>${quote}</blockquote>`);
+    html = html.replace(/^> (.+)/gm, `<blockquote>$1</blockquote>`);
     htmlOutput.textContent = html;
     preview.innerHTML = html;
     return html;
