@@ -19,11 +19,11 @@ const rules = [
         replace: `<em>$2</em>`
     },
     {
-        regex: /!\[(.+?)\]\((.+?)\)/g,
+        regex: /!\[([^\]]+)\]\(([^)]+)\)/g,
         replace: `<img alt="$1" src="$2">`
     },
     {
-        regex: /\[(.+?)\]\((.+?)\)/g,
+        regex: /\[([^\]]+)\]\(([^)]+)\)/g,
         replace: `<a href="$2">$1</a>`
     },
     {
