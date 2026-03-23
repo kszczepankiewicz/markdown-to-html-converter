@@ -11,19 +11,19 @@ const rules = [
         replace: (_, level, text) => `<h${level.length}>${text}</h${level.length}>`
     },
     {
-        regex: /(\*\*|__)(.+?)\1/gm,
+        regex: /(\*\*|__)(.+?)\1/g,
         replace: `<strong>$2</strong>`
     },
     {
-        regex: /(\*|_)(.+?)\1/gm,
+        regex: /(\*|_)(.+?)\1/g,
         replace: `<em>$2</em>`
     },
     {
-        regex: /!\[(.+?)\]\((.+?)\)/gm,
+        regex: /!\[(.+?)\]\((.+?)\)/g,
         replace: `<img alt="$1" src="$2">`
     },
     {
-        regex: /\[(.+?)\]\((.+?)\)/gm,
+        regex: /\[(.+?)\]\((.+?)\)/g,
         replace: `<a href="$2">$1</a>`
     },
     {
