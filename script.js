@@ -4,10 +4,12 @@ const preview = document.getElementById('preview');
 
 const convertMarkdown = () => {
     let html = markdownInput.value;
-    // heading
-    html = html.replace(/^(#+) (.+)$/gm, (_, level, text) => `<h${level.length}>${text}</h${level.length}>`);
 
     const rules = [
+        {
+            regex: /^(#+) (.+)$/gm,
+            replace: (_, level, text) => `<h${level.length}>${text}</h${level.length}>`
+        },
         {
             regex: /(\*\*|__)(.+)\1/gm,
             replace: `<strong>$2</strong>`
@@ -30,10 +32,7 @@ const convertMarkdown = () => {
         }
     ];
 
-    for (const rule of rules) {
-        html = html.replace(rule.regex, rule.replace);
-        debugger
-    }
+    for (const rule of rules) html = html.replace(rule.regex, rule.replace);
     htmlOutput.textContent = html;
     preview.innerHTML = html;
     return html;
