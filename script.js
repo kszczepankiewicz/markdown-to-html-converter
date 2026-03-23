@@ -31,22 +31,15 @@ const rules = [
     }
 ];
 
+const escapeHTML = str => str.replace(/[<>]/g, c => ({ '<': '&lt;', '>': '&gt;' }[c]));
 
 const convertMarkdown = () => {
     let html = markdownInput.value;
 
-    try {
-        if (html.includes('<')) throw new Error();
-    } catch (Error) {
-        htmlOutput.textContent = `Input cannot contain symbol <`;
-        console.error('Input cannot contain symbol <');
-        return;
-    }
-
     for (const rule of rules) html = html.replace(rule.regex, rule.replace);
 
-    htmlOutput.textContent = html;
     preview.innerHTML = html;
+    htmlOutput.innerHTML = escapeHTML(html);
     return html;
 }
 
