@@ -4,6 +4,13 @@ const preview = document.getElementById('preview');
 
 const convertMarkdown = () => {
     let html = markdownInput.value;
+    try {
+        if (html.includes('<')) throw new Error();
+    } catch (Error) {
+        htmlOutput.textContent = `Input cannot contain symbol <`;
+        console.error('Input cannot contain symbol <');
+        return;
+    }
 
     const rules = [
         {
