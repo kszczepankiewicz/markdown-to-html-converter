@@ -3,6 +3,7 @@ const $ = id => document.getElementById(id);
 const markdownInput = $('markdown-input');
 const htmlOutput = $('html-output');
 const preview = $('preview');
+const copyBtn = $('copy-button');
 
 const rules = [
     {
@@ -44,3 +45,12 @@ const convertMarkdown = () => {
 }
 
 markdownInput.addEventListener('input', convertMarkdown);
+
+copyBtn.addEventListener('click', () => {
+    try {
+        navigator.clipboard.writeText(htmlOutput.innerHTML);
+        copyBtn.textContent = 'Copied';
+    } catch {
+        copyBtn.textContent = 'Copy failed';
+    }
+});
