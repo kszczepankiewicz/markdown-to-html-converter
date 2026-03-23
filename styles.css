@@ -9,10 +9,6 @@ body {
     background: #000;
 }
 
-div {
-    color: #000;
-}
-
 #markdown-input {
     width: 100%;
     height: 100px;
@@ -20,6 +16,7 @@ div {
 
 #html-output,
 #preview {
+    color: #000;
     height: 100px;
     display: inline-block;
     width: 100%;
