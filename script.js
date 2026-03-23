@@ -32,7 +32,14 @@ const rules = [
     }
 ];
 
-const escapeHTML = str => str.replace(/[<>]/g, c => ({ '<': '&lt;', '>': '&gt;' }[c]));
+const escapeHTML = str =>
+    str.replace(/[<>]/g, c => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        '\'': '&apos;'
+    }[c]));
 
 const convertMarkdown = () => {
     let html = markdownInput.value;
