@@ -6,16 +6,34 @@ const convertMarkdown = () => {
     let html = markdownInput.value;
     // heading
     html = html.replace(/^(#+) (.+)$/gm, (_, level, text) => `<h${level.length}>${text}</h${level.length}>`);
-    // strong
-    html = html.replace(/(\*\*|__)(.+)\1/gm, `<strong>$2</strong>`);
-    // em
-    html = html.replace(/(\*|_)(.+)\1/gm, `<em>$2</em>`);
-    // img
-    html = html.replace(/!\[(.+)\]\((.+)\)/gm, `<img alt="$1" src="$2">`);
-    // a
-    html = html.replace(/\[(.+)\]\((.+)\)/gm, `<a href="$2">$1</a>`);
-    // blockquote
-    html = html.replace(/^> (.+)/gm, `<blockquote>$1</blockquote>`);
+
+    const rules = [
+        {
+            regex: /(\*\*|__)(.+)\1/gm,
+            replace: `<strong>$2</strong>`
+        },
+        {
+            regex: /(\*|_)(.+)\1/gm,
+            replace: `<em>$2</em>`
+        },
+        {
+            regex: /!\[(.+)\]\((.+)\)/gm,
+            replace: `<img alt="$1" src="$2">`
+        },
+        {
+            regex: /\[(.+)\]\((.+)\)/gm,
+            replace: `<a href="$2">$1</a>`
+        },
+        {
+            regex: /^> (.+)/gm,
+            replace: `<blockquote>$1</blockquote>`
+        }
+    ];
+
+    for (const rule of rules) {
+        html = html.replace(rule.regex, rule.replace);
+        debugger
+    }
     htmlOutput.textContent = html;
     preview.innerHTML = html;
     return html;
