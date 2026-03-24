@@ -7,7 +7,7 @@ const copyBtn = $('copy-button');
 
 const rules = [
     {
-        regex: /^(#{1,6}) (.+?)$/gm,
+        regex: /^(#{1,6})\s+(.+?)$/gm,
         replace: (_, level, text) => `<h${level.length}>${text}</h${level.length}>`
     },
     {
@@ -27,7 +27,7 @@ const rules = [
         replace: `<a href="$2">$1</a>`
     },
     {
-        regex: /^> (.+)/gm,
+        regex: /^>\s+(.+)/gm,
         replace: `<blockquote>$1</blockquote>`
     }
 ];
